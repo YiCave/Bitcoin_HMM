@@ -20,6 +20,15 @@ This project focuses on applying statistical-based Hidden Markov Model(HMM), Nat
     }
     ```
   - Correlation tables between features
+    <details>
+      <summary>Click to expand</summary>
+
+      Here's some hidden content!
+
+      - Point A
+      - Point B
+
+    </details>
   - Frequency plots against features
   #### Part 2 - Optimising Model Selection
   - Model selection using BIC (Bayesian Information Criterion), AIC (Akaike Information Criterion) and Silhouette score
