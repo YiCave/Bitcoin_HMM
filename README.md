@@ -13,7 +13,7 @@ This project focuses on applying statistical-based Hidden Markov Model(HMM), Nat
 ### HMM Backbone
   #### Part 1 - Obtaining Datas and Identify Basic Relationships
   - Features input for visualisation (from distinct endpoints, merged)
-     <div style="border: 1px solid #ccc; border-radius: 10px; padding: 10px; background-color: rgba(255,255,255,0.2); font-family: monospace;">
+     <div style="border: 1px solid #ccc; border-radius: 10px; padding: 10px; background-color: rgba(129,212,226,255); font-family: monospace;">
     Type something here...
     </div>
   - Correlation tables between features
