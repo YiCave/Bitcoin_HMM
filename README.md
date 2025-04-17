@@ -13,9 +13,9 @@ This project focuses on applying statistical-based Hidden Markov Model(HMM), Nat
 ### HMM Backbone
   #### Part 1 - Obtaining Datas and Identify Basic Relationships
   - Features input for visualisation (from distinct endpoints, merged)
-    ...
-    type smtg
-    ...
+    ```
+    Type here...
+    ```
   - Correlation tables between features
   - Frequency plots against features
   #### Part 2 - Optimising Model Selection
