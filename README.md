@@ -10,12 +10,14 @@ This project focuses on applying statistical-based Hidden Markov Model(HMM), Nat
 - Statistical tools
   
 ## Architechture Workflow
+
 ### HMM Backbone
   #### Part 1 - Obtaining Datas and Identify Basic Relationships
   - Features input for visualisation (from distinct endpoints, merged)
     ```
-    skfadgsfdgnfgdfeGFGFERWEGGHREARRDJFRETRYJTRTERYJDRTRYJDRTRYJYTYTYDTJYT \n
-    DRTRYJTRTERDJGRTRYDTJTRYHJGRYHJGRYHGJRYHGJRYHGJRRHGRHGRTERHGHRHDETFHFDTERHGETRHREFRFHRERGRRGHRHGRHRHGHRHRHRHRDG
+    public static int compute(int a,int b){
+      return a+b
+    }
     ```
   - Correlation tables between features
   - Frequency plots against features
@@ -36,15 +38,15 @@ This project focuses on applying statistical-based Hidden Markov Model(HMM), Nat
    - Regime Prediction Accuracy
    - Regime Transition Detection Accuracy
 
-  ## Next
-  - Parameter tuning for optimal number of regimes
-3. NLP Support
+ 
+### NLP Support
+
 4. LSTM_CNN OHLCV
 5. Data Manipulation
 6. HMM NLP Signals Integration
 7. Features Engineering
 8. Weightage Control and Application
 9. Backtesting and ForwardTesting
-
+ - Parameter tuning for optimal number of regimes
 
   
