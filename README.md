@@ -14,7 +14,8 @@ This project focuses on applying statistical-based Hidden Markov Model(HMM), Nat
   #### Part 1 - Obtaining Datas and Identify Basic Relationships
   - Features input for visualisation (from distinct endpoints, merged)
     ```
-    skfadgsfdgnfgdfeGFGFERWEGGHREARRDJFRETRYJTRTERYJDRTRYJDRTRYJYTYTYDTJYTDRTRYJTRTERDJGRTRYDTJTRYHJGRYHJGRYHGJRYHGJRYHGJRRHGRHGRTERHGHRHDETFHFDTERHGETRHREFRFHRERGRRGHRHGRHRHGHRHRHRHRDG
+    skfadgsfdgnfgdfeGFGFERWEGGHREARRDJFRETRYJTRTERYJDRTRYJDRTRYJYTYTYDTJYT \n
+    DRTRYJTRTERDJGRTRYDTJTRYHJGRYHJGRYHGJRYHGJRYHGJRRHGRHGRTERHGHRHDETFHFDTERHGETRHREFRFHRERGRRGHRHGRHRHGHRHRHRHRDG
     ```
   - Correlation tables between features
   - Frequency plots against features
