@@ -30,7 +30,8 @@ This project focuses on applying statistical-based Hidden Markov Model(HMM), Nat
    - Visualisations to indicate precision
    - Regime Prediction Accuracy
    - Regime Transition Detection Accuracy
-  
+
+  ## Next
   - Parameter tuning for optimal number of regimes
 3. NLP Support
 4. LSTM_CNN OHLCV
