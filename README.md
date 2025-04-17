@@ -11,17 +11,22 @@ This project focuses on applying statistical-based Hidden Markov Model(HMM), Nat
   
 ## Practical Workflow
 ### HMM Backbone
-  #### Part 1 - Obtaining datas and identify basic relationships
+  #### Part 1 - Obtaining Datas and Identify Basic Relationships
   - Features input for visualisation (from distinct endpoints, merged)
   - Correlation tables between features
   - Frequency plots against features
-  #### Part 2 - Optimising model selection
+  #### Part 2 - Optimising Model Selection
   - Model selection using BIC (Bayesian Information Criterion), AIC (Akaike Information Criterion) and Silhouette score (statistic support)
   - Elbow Plots which visualize the minimisation process, States prediction
   - Regime Classification and Distribution Plots
   - Statistial-based Regime Analysis
-  - Transition probability matrix visualization
+  #### Part 3 - Regime Transition Handling
+  - Keeptrack regime transition by count
+  - Probabilities Conversion
+  - Correlation tables between regimes (from and to)
+  #### Part 3 - Regime Transition Handling
 
+  
   - Parameter tuning for optimal number of regimes
 3. NLP Support
 4. LSTM_CNN OHLCV
