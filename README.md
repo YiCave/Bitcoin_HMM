@@ -2,7 +2,7 @@
 ## Overview
 This project focuses on applying statistical-based Hidden Markov Model(HMM), Natural Language Processing(NLP) that act as an indicators/filters that enhanced the entire backtest process, in order to boost profitability by hitting higher sharpe ratio while achieving the criteria for maximum drawdown and trade frequency.
 
-###Tools Used
+## Tools Used
 - Python
 - Jupyter Notebook
 - Multiple machine learning Libraries
