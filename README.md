@@ -24,8 +24,12 @@ This project focuses on applying statistical-based Hidden Markov Model(HMM), Nat
   - Keeptrack regime transition by count
   - Probabilities Conversion
   - Correlation tables between regimes (from and to)
-  #### Part 3 - Regime Transition Handling
-
+  - Regime Interpretation based on features
+  #### Part 4 - Transition Precision Simulation
+   - Train and Test Set Splitting from Original Datasets （supervised learning)
+   - Visualisations to indicate precision
+   - Regime Prediction Accuracy
+   - Regime Transition Detection Accuracy
   
   - Parameter tuning for optimal number of regimes
 3. NLP Support
