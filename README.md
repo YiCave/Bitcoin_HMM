@@ -4,15 +4,15 @@ This project focuses on applying statistical-based Hidden Markov Model(HMM), Nat
 
 ## Practical Workflow
 1. 📊 HMM Backbone
--Leverages statistical Hidden Markov Models to identify market regimes and behavioral patterns.
+  -Leverages statistical Hidden Markov Models to identify market regimes and behavioral patterns.
 
--Regime prediction (e.g., bull/bear/neutral)
+  -Regime prediction (e.g., bull/bear/neutral)
 
--Correlation tables between features and hidden states
+  -Correlation tables between features and hidden states
 
--Model selection using BIC (Bayesian Information Criterion) and AIC (Akaike Information Criterion)
+  -Model selection using BIC (Bayesian Information Criterion) and AIC (Akaike Information Criterion)
 
--Transition probability matrix visualization
+  -Transition probability matrix visualization
 
 Parameter tuning for optimal number of regimes
 3. NLP Support
