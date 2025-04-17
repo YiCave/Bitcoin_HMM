@@ -19,7 +19,8 @@ This project focuses on applying statistical-based Hidden Markov Model(HMM), Nat
   - Correlation tables between features
   - Frequency plots against features
   #### Part 2 - Optimising Model Selection
-  - Model selection using BIC (Bayesian Information Criterion), AIC (Akaike Information Criterion) and Silhouette score (statistic support)
+  - Model selection using BIC (Bayesian Information Criterion), AIC (Akaike Information Criterion) and Silhouette score
+  - Statistical approach on choosing optimised model
   - Elbow Plots which visualize the minimisation process, States prediction
   - Regime Classification and Distribution Plots
   - Statistial-based Regime Analysis
