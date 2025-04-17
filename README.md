@@ -1,6 +1,6 @@
 # Project Title: ON-CHAIN DATA AUTOMATED TRADING MACHINE
 ## Overview
-This project focuses on applying statistical-based Hidden Markov Model(HMM), Natural Language Processing(NLP) that act as an indicators/filters that enhanced the entire backtest process, in order to boost profitability by hitting higher sharpe ratio while achieving the criteria for maximum drawdown and trade frequency.
+This project focuses on applying statistical-based Hidden Markov Model(HMM), Natural Language Processing(NLP) that act as an indicators/ filters that enhanced the entire backtest process, in order to boost profitability by hitting higher sharpe ratio while achieving the criteria for maximum drawdown and trade frequency.
 
 ## Tools Used
 - Python
@@ -11,11 +11,15 @@ This project focuses on applying statistical-based Hidden Markov Model(HMM), Nat
   
 ## Practical Workflow
 ### HMM Backbone
-  - Leverages statistical models for features input
-  - 
-  - Model selection using BIC (Bayesian Information Criterion), AIC (Akaike Information Criterion) 
+  #### Part 1 - Obtaining datas and identify basic relationships
+  - Features input for visualisation (from distinct endpoints, merged)
   - Correlation tables between features
-  - Model selection using BIC (Bayesian Information Criterion) and AIC (Akaike Information Criterion)
+  - Frequency plots against features
+  #### Part 2 - Optimising model selection
+  - Model selection using BIC (Bayesian Information Criterion), AIC (Akaike Information Criterion) and Silhouette score (statistic support)
+  - Elbow Plots which visualize the minimisation process, States prediction
+  - Regime Classification and Distribution Plots
+  - Statistial-based Regime Analysis
   - Transition probability matrix visualization
 
   - Parameter tuning for optimal number of regimes
