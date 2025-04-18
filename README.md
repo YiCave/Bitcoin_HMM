@@ -47,17 +47,32 @@ This project focuses on applying statistical-based Hidden Markov Model(HMM), Nat
     ```
   
   #### Part 2 - Optimising Model Selection
-  - Model selection using Bayesian Information Criterion, Akaike Information Criterion and Silhouette score
+  - Model selection using Bayesian Information Criterion, Akaike Information Criterion 
      ```
+        Statistical approach:
         n_features = X_scaled.shape[1]
         n_params = n_states * n_states + n_states * n_features + n_states * n_features * (n_features + 1) // 2
         log_likelihood = model.score(X_scaled)
         bic = -2 * log_likelihood + n_params * np.log(X_scaled.shape[0])
         aic = -2 * log_likelihood + 2 * n_params
     ```
-  - Statistical approach on choosing optimised model
+  - Silhouette score to evaluate quality of clustering
+    ```
+       silhouette = silhouette_score(X_scaled, hidden_states)
+       silhouette_scores.append(silhouette)
+    ```
   - Elbow Plots which visualize the minimisation process, States prediction
+    ```
+      📌 Append BIC and AIC score to array
+      📌 Identify the model(distinct number of states)that have lowest relative score
+      📌 Visualise Silhouette score tuat identify how well data fits their cluster
+    ```
   - Regime Classification and Distribution Plots
+    ```
+      📌 Append BIC and AIC score to array
+      📌 Identify the model(distinct number of states)that have lowest relative score
+      📌 Visualise Silhouette score tuat identify how well data fits their cluster
+    ```
   - Statistial-based Regime Analysis
   #### Part 3 - Regime Transition Handling
   - Keeptrack regime transition by count
@@ -72,6 +87,7 @@ This project focuses on applying statistical-based Hidden Markov Model(HMM), Nat
 
  
 ### NLP Support
+Matt do here
 
 4. LSTM_CNN OHLCV
 5. Data Manipulation
