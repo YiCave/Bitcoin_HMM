@@ -77,18 +77,34 @@ This project focuses on applying statistical-based Hidden Markov Model(HMM), Nat
     ```
   - Summary Metrics for Further Regime Characterisitc Identifications
     ```
-    Example(using flow mean features):    
+    Example(using flow mean metric):    
     regime         mean         std        min          max                                                            
       0         7.288524    3.084889   0.006716    15.920316   
       1        20.494636    6.007822   0.089733    38.411333      
       2       216.062946  352.265007   0.023389  4447.247543   
       3         2.868473    1.706804   0.000000     7.368699      
       4        53.256369   20.854317  24.866651   144.325671     
-      5        13.094486    8.696826   0.064580    95.027511    
+      5        13.094486    8.696826   0.064580    95.027511
+
+    📌 Did for all metrics as above
+    📌 Bar Chart Graphs Visualisation to identify outlying regime for each metrics
+    📌 Obtain Insights for future in-depth regime analysis
     ```
   #### Part 3 - Regime Transition Handling
   - Keeptrack regime transition by count
-  - Probabilities Conversion
+     ```
+      Regime transition counts:
+          To   0     1    2     3     4     5
+      From                                   
+      0       7312  2710  349  4235  1884  2012
+      1       3003  2206  137  1609  1153  1130
+      2        276   174  153   152   242   177
+      3       3813  1481  214  2980  1245  1075
+      4       1910  1291  183  1174  1655   767
+      5       2188  1376  138   659   801  1320
+        
+      📌 
+      ```
   - Correlation tables between regimes (from and to)
   - Regime Interpretation based on features
   #### Part 4 - Transition Precision Simulation
