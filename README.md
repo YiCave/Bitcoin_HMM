@@ -1,6 +1,6 @@
 # Project Title: ON-CHAIN DATA AUTOMATED TRADING MACHINE
 ## Overview
-This project focuses on applying statistical-based Hidden Markov Models(HMM), Natural Language Processing(NLP) that act as an indicators/ filters that enhanced the entire backtest process, in order to boost profitability by hitting higher sharpe ratio while achieving the criteria for maximum drawdown and trade frequency.
+This project focuses on applying statistical-based Hidden Markov Models(HMM), Natural Language Processing(NLP) that act as indicators/ filters that enhance the entire backtest process, in order to boost profitability by hitting a higher sharpe ratio while achieving the criteria for maximum drawdown and trade frequency.
 
 ## Tools Used
 - Python
@@ -65,7 +65,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
     ```
       📌 Append BIC and AIC score to an array
       📌 Identify the model(distinct number of states)that have lowest relative score
-      📌 Visualise Silhouette score to identify how well data fits their cluster
+      📌 Visualise Silhouette score to identify how well the data fits the cluster
     ```
   - Regime Classification and Distribution Plots
     ```
@@ -73,7 +73,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
       📌 5-year time series datapoint Visualisation
          - Enable us to easily identify data with extreme flow means
          - Better understanding of regime characteristics
-      📌 Visualise Silhouette score to identify how well data fits their cluster
+      📌 Visualise Silhouette score to identify how well the data fits their cluster
     ```
   - Summary Metrics for Further Regime Characteristic Identifications
     ```
@@ -103,13 +103,13 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
       4       1910  1291  183  1174  1655   767
       5       2188  1376  138   659   801  1320
         
-      📌 Verify how likely systems moves from one regime to another
+      📌 Verify how likely systems move from one regime to another
       📌 Powerful tool during the backtest period
       📌 Empowers prediction by forecasting regimes, identifying dominant transition paths
       ```
   - Convert to regime transition probability
      ```
-      📌 Similar to counts, easier to use for probabilistic modeling or as transition matrices in HMMs
+      📌 Similar to counts, easier to use for probabilistic modelling or as transition matrices in HMMs
      ```
   - Regime Interpretation based on metrics
     ```
@@ -120,7 +120,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
   #### Part 4 - Transition Precision Simulation
    - Train and Test Set Splitting from Original Datasets （supervised learning)
      ```
-      📌 The original dataset splitted into two, train set and test set
+      📌 The original dataset was split into two: the train set and the test set
       📌 Learn how well a model can identify the current regime 
      ```
    - Visualisations to indicate precision
@@ -132,7 +132,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
        ```
       📌 Match predicted regime sequences with actual using mapping logic
       📌 Compute aligned accuracy score to evaluate label consistency
-      📌 Helps quantify model performance across all regimes (not just majority class)
+      📌 Helps quantify model performance across all regimes (not just the majority class)
      ```
    - Regime Transition Detection Accuracy
        ```
@@ -142,8 +142,84 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
 
  
 ### NLP Support
-Matt do here
-
+  #### Part 1 - Preprocessing and Feature Engineering
+   - Input preprocessing and representation
+     ```
+     📌 Data loaded from structured CSV or DataFrame  
+     📌 Pre-labelled with sentiments: negative, neutral, positive  
+     📌 Normalization includes lowercasing, punctuation removal  
+     📌 Token and word-level handling for varied sources (tweets, news, posts)
+     ```
+   - TF-IDF Feature Construction
+     ```
+     📌 Use TF-IDF Vectorizer with unigram and bigram support  
+     📌 Converts text to sparse numerical vectors  
+     📌 Ideal for small-to-medium datasets  
+     📌 Sample weighting is used to address class imbalance  
+     ```
+   - Label Encoding
+     ```
+     📌 Sentiment class labels mapped for modelling:
+        👉 ‘negative’ → 0
+        👉 ‘neutral’  → 1
+        👉 ‘positive’ → 2
+     📌 Consistent across both traditional ML and BERT pipelines  
+     ```
+  ### Part 2 - Model Building and Optimisation
+   - Logistic Regression with TF-IDF
+     ```
+     📌 Classic ML pipeline: TF-IDF + Logistic Regression  
+     📌 Class weights handled to reduce bias from imbalanced data
+     📌 Fast training, interpretable coefficients  
+     📌 Good baseline for resource-constrained environments  
+     ```
+   - BERT (DISTILBERT) Fine-Tuning
+     ```
+     📌 Tokenization via HuggingFace `DistilBertTokenizer`  
+        👉 Pad and truncate to 128 tokens  
+        👉 Attention masks generated  
+     📌 Sentiment classification head with 3 output neurons  
+     📌 Fine-tuning parameters:  
+        👉 Mixed precision (FP16)  
+        👉 Gradient accumulation  
+        👉 Epoch-based model checkpointing  
+     ```
+   - Metrics for Evaluation
+     ```
+     📌 Evaluation using:
+        👉 Accuracy Score  
+        👉 Weighted F1 Score  
+     📌 Track performance on the test set per epoch  
+     📌 Highlighted per model: traditional vs. transformer-based  
+     ```
+  ### Part 3 - Comparative Visualisation and Analysis
+   - Score Tracking and Comparison
+     ```
+     📌 Evaluation matrix for both models:
+         - Accuracy comparison (TF-IDF vs. BERT)  
+         - F1 score: highlighting class prediction quality 
+     ```
+  ### Part 4 - Future Directions and Production-Level Strategy
+   - Domain-Specific Model Integration
+     ```
+     📌 Integration of `ProsusAI/finbert` for financial language  
+     📌 Domain-tuned BERT boosts performance in crypto finance context  
+     📌 Transfer learning from FinBERT to enhance downstream tasks  
+     ```
+   - Hybrid Ensemble Model (Future Work)
+     ```
+     📌 Combine predictions from:
+        - TF-IDF model (fast, stable)
+        - BERT model (deep, contextual)
+     📌 Use ensemble logic or meta-classifier for final decision     
+     ```
+   - Deployment Considerations
+     ```
+     📌 TF-IDF pipeline suitable for lightweight deployment  
+     📌 BERT pipeline suited for heavyweight deployment (the better model)
+     📌 REST API with Flask/FastAPI backend for real-time sentiment scoring  
+     ```
+     
 4. LSTM_CNN OHLCV
 5. Data Manipulation
 6. HMM NLP Signals Integration
