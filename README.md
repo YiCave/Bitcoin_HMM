@@ -69,11 +69,23 @@ This project focuses on applying statistical-based Hidden Markov Model(HMM), Nat
     ```
   - Regime Classification and Distribution Plots
     ```
-      📌 Append BIC and AIC score to array
-      📌 Identify the model(distinct number of states)that have lowest relative score
+      📌 Statistically backed regime classification for datas
+      📌 5-years time serires datapoint Visualisation
+         - Enable us to easily identify data with extreme flowmeans
+         - Better understanding on regime characteristics
       📌 Visualise Silhouette score tuat identify how well data fits their cluster
     ```
-  - Statistial-based Regime Analysis
+  - Summary Metrics for Further Regime Characterisitc Identifications
+    ```
+    Example(using flow mean features):    
+    regime         mean         std        min          max                                                            
+      0         7.288524    3.084889   0.006716    15.920316   
+      1        20.494636    6.007822   0.089733    38.411333      
+      2       216.062946  352.265007   0.023389  4447.247543   
+      3         2.868473    1.706804   0.000000     7.368699      
+      4        53.256369   20.854317  24.866651   144.325671     
+      5        13.094486    8.696826   0.064580    95.027511    
+    ```
   #### Part 3 - Regime Transition Handling
   - Keeptrack regime transition by count
   - Probabilities Conversion
