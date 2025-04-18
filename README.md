@@ -21,20 +21,32 @@ This project focuses on applying statistical-based Hidden Markov Model(HMM), Nat
     </details>
 ### HMM Backbone
   #### Part 1 - Obtaining Datas and Identify Basic Relationships
-  📌 Features input for visualisation (from distinct endpoints, merged)
+  - Features input for visualisation (from distinct endpoints, merged)
     ```
-    📌 Prioritising exchange flow endpoints like flow_mean, flow_total and transatction_count,
-        also includes inflow, outflow and netflow endpoints by utilising formulas. Example:
-        👉 f_ttl = concat(r1,r2) +  exponential noise
-        👉 f_mean= f_ttl / uniform distributor(10-30)
-        👉 t_cnt= f_ttl * rand(0.5 - 2) + base offset
-    📌 Merging into a CSV file through initial data preprocessing (splitted hourly, 5 years' data)
-    📌 Prevent redundant request to read data each time
-    📌 Enhancing
+   📌 Data pre-stored in CSV to reduce redundant read operation
+   📌 Exchange flow endpoints prioritized: flow_mean, flow_total, transaction_count
+   📌 Additional metrics: inflow, outflow, netflow 
+   📌 Handling missing values and synthetic data generation:
+       👉 f_ttl = concat(r1, r2) + exponential noise
+       👉 f_mean = f_ttl / uniform(10–30)
+       👉 t_cnt = f_ttl * rand(0.5–2) + base offset
+   📌 Aggregated into hourly intervals, covering 5 years
+   📌 5-year visualisation using timeseries plots
     ```
-  📌 Correlation tables between features
-   
-  📌 Frequency plots against features
+  - Correlation tables between features
+    ```
+   📌 Generate correlation matrix (0<=x<=1) among features
+   📌 Analyse relationship between features
+   📌 Visualised using heatmaps for feature prioritisation
+    ```
+  - Frequency plots against features
+     ```
+   📌 Identifying norm of the crypto, significant signal for upcoming actions
+       - Verify whale dominations 
+       - Verify whale density
+       - Verify speculative bubbles' presence
+   📌 Enable data-driven decision-making through graph shapes
+    ```
   #### Part 2 - Optimising Model Selection
   - Model selection using BIC (Bayesian Information Criterion), AIC (Akaike Information Criterion) and Silhouette score
   - Statistical approach on choosing optimised model
