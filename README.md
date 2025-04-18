@@ -51,6 +51,7 @@ This project focuses on applying statistical-based Hidden Markov Model(HMM), Nat
        - Verify whale density
        - Verify speculative bubbles' presence
      📌 Enable data-driven decision-making through graph shapes
+       - Ensure active trading environment
     ```
   
   #### Part 2 - Optimising Model Selection
