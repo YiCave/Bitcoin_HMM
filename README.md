@@ -1,6 +1,6 @@
 # Project Title: ON-CHAIN DATA AUTOMATED TRADING MACHINE
 ## Overview
-This project focuses on applying statistical-based Hidden Markov Model(HMM), Natural Language Processing(NLP) that act as an indicators/ filters that enhanced the entire backtest process, in order to boost profitability by hitting higher sharpe ratio while achieving the criteria for maximum drawdown and trade frequency.
+This project focuses on applying statistical-based Hidden Markov Models(HMM), Natural Language Processing(NLP) that act as an indicators/ filters that enhanced the entire backtest process, in order to boost profitability by hitting higher sharpe ratio while achieving the criteria for maximum drawdown and trade frequency.
 
 ## Tools Used
 - Python
@@ -9,14 +9,14 @@ This project focuses on applying statistical-based Hidden Markov Model(HMM), Nat
 - Graphing Libraries
 - Statistical tools
   
-## Architechture Workflow
+## Architecture Workflow
 
 ### HMM Backbone
-  #### Part 1 - Obtaining Datas and Identify Basic Relationships
+  #### Part 1 - Obtaining Data and Identifying Basic Relationships
   - Features input for visualisation (from distinct endpoints, merged)
     
     ```
-     📌 Data pre-stored in CSV to reduce redundant read operation
+     📌 Data pre-stored in CSV to reduce redundant read operations
      📌 Exchange flow endpoints prioritized: flow_mean, flow_total, transaction_count
      📌 Additional metrics: inflow, outflow, netflow 
      📌 Handling missing values and synthetic data generation:
@@ -31,19 +31,19 @@ This project focuses on applying statistical-based Hidden Markov Model(HMM), Nat
     
     ```
      📌 Generate correlation matrix (0<=x<=1) among features
-     📌 Analyse relationship between features
+     📌 Analyse the relationship between features
      📌 Visualised using heatmaps for feature prioritisation
     ```
     
   - Frequency plots against features
     
      ```
-     📌 Identifying norm of the crypto, significant signal for upcoming actions
+     📌 Identifying the norm of the crypto, a significant signal for upcoming actions
        - Verify whale dominations 
        - Verify whale density
-       - Verify speculative bubbles' presence
+       - Verify the presence of speculative bubbles
      📌 Enable data-driven decision-making through graph shapes
-       - Ensure active trading environment
+       - Ensure the active trading environment
     ```
   
   #### Part 2 - Optimising Model Selection
@@ -56,26 +56,26 @@ This project focuses on applying statistical-based Hidden Markov Model(HMM), Nat
         bic = -2 * log_likelihood + n_params * np.log(X_scaled.shape[0])
         aic = -2 * log_likelihood + 2 * n_params
     ```
-  - Silhouette score to evaluate quality of clustering
+  - Silhouette score to evaluate the quality of clustering
     ```
        silhouette = silhouette_score(X_scaled, hidden_states)
        silhouette_scores.append(silhouette)
     ```
-  - Elbow Plots which visualize the minimisation process, States prediction
+  - Elbow Plots which visualize the minimization process, state prediction
     ```
-      📌 Append BIC and AIC score to array
+      📌 Append BIC and AIC score to an array
       📌 Identify the model(distinct number of states)that have lowest relative score
-      📌 Visualise Silhouette score tuat identify how well data fits their cluster
+      📌 Visualise Silhouette score to identify how well data fits their cluster
     ```
   - Regime Classification and Distribution Plots
     ```
-      📌 Statistically backed regime classification for datas
-      📌 5-years time serires datapoint Visualisation
-         - Enable us to easily identify data with extreme flowmeans
-         - Better understanding on regime characteristics
-      📌 Visualise Silhouette score tuat identify how well data fits their cluster
+      📌 Statistically backed regime classification for data
+      📌 5-year time series datapoint Visualisation
+         - Enable us to easily identify data with extreme flow means
+         - Better understanding of regime characteristics
+      📌 Visualise Silhouette score to identify how well data fits their cluster
     ```
-  - Summary Metrics for Further Regime Characterisitc Identifications
+  - Summary Metrics for Further Regime Characteristic Identifications
     ```
     Example(using flow mean metric):    
     regime         mean         std        min          max                                                            
@@ -87,7 +87,7 @@ This project focuses on applying statistical-based Hidden Markov Model(HMM), Nat
       5        13.094486    8.696826   0.064580    95.027511
 
     📌 Did for all metrics as above
-    📌 Bar Chart Graphs Visualisation to identify outlying regime for each metrics
+    📌 Bar Chart Graphs Visualisation to identify outlying regimes for each metric
     📌 Obtain Insights for future in-depth regime analysis
     ```
   #### Part 3 - Regime Transition Handling
@@ -103,15 +103,42 @@ This project focuses on applying statistical-based Hidden Markov Model(HMM), Nat
       4       1910  1291  183  1174  1655   767
       5       2188  1376  138   659   801  1320
         
-      📌 
+      📌 Verify how likely systems moves from one regime to another
+      📌 Powerful tool during the backtest period
+      📌 Empowers prediction by forecasting regimes, identifying dominant transition paths
       ```
-  - Correlation tables between regimes (from and to)
-  - Regime Interpretation based on features
+  - Convert to regime transition probability
+     ```
+      📌 Similar to counts, easier to use for probabilistic modeling or as transition matrices in HMMs
+     ```
+  - Regime Interpretation based on metrics
+    ```
+      📌 Each regime is characterized by statistical properties: Stability, Duration, Frequency
+      📌 Enables semantic understanding, the representation of the regime's plain text meaning
+      📌 Essential for drawing meaningful insights from clusters
+    ```
   #### Part 4 - Transition Precision Simulation
    - Train and Test Set Splitting from Original Datasets （supervised learning)
+     ```
+      📌 The original dataset splitted into two, train set and test set
+      📌 Learn how well a model can identify the current regime 
+     ```
    - Visualisations to indicate precision
+       ```
+      📌 Time series plots overlaid with predicted vs. true regimes
+      📌 Learn how well a model can identify the current regime 
+     ```
    - Regime Prediction Accuracy
+       ```
+      📌 Match predicted regime sequences with actual using mapping logic
+      📌 Compute aligned accuracy score to evaluate label consistency
+      📌 Helps quantify model performance across all regimes (not just majority class)
+     ```
    - Regime Transition Detection Accuracy
+       ```
+      📌 Focus on identifying regime *switch points* (transitions), not just static regimes
+      📌 Evaluate using precision, recall, and F1 for transition detection 
+     ```
 
  
 ### NLP Support
