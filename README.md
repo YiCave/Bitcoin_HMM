@@ -10,17 +10,7 @@ This project focuses on applying statistical-based Hidden Markov Model(HMM), Nat
 - Statistical tools
   
 ## Architechture Workflow
-
-### HMM Backbone
-  #### Part 1 - Obtaining Datas and Identify Basic Relationships
-  - Features input for visualisation (from distinct endpoints, merged)
-    ```
-    public static int compute(int a,int b){
-      return a+b
-    }
-    ```
-  - Correlation tables between features
-    <details>
+ <details>
       <summary>Click to expand</summary>
 
       Here's some hidden content!
@@ -29,6 +19,18 @@ This project focuses on applying statistical-based Hidden Markov Model(HMM), Nat
       - Point B
 
     </details>
+### HMM Backbone
+  #### Part 1 - Obtaining Datas and Identify Basic Relationships
+  - Features input for visualisation (from distinct endpoints, merged)
+    ```
+     Prioritising exchange flow endpoints like flow_mean, flow_total and transatction_count, also includes inflow,
+     outflow and netflow endpoints
+     Merging into a CSV file through initial data preprocessing (splitted hourly, 5 years' data)
+     Prevent redundant request to read data each time
+     Enhancing
+    ```
+  - Correlation tables between features
+   
   - Frequency plots against features
   #### Part 2 - Optimising Model Selection
   - Model selection using BIC (Bayesian Information Criterion), AIC (Akaike Information Criterion) and Silhouette score
