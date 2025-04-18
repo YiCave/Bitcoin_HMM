@@ -10,15 +10,7 @@ This project focuses on applying statistical-based Hidden Markov Model(HMM), Nat
 - Statistical tools
   
 ## Architechture Workflow
- <details>
-      <summary>Click to expand</summary>
 
-      Here's some hidden content!
-
-      - Point A
-      - Point B
-
-    </details>
 ### HMM Backbone
   #### Part 1 - Obtaining Datas and Identify Basic Relationships
   - Features input for visualisation (from distinct endpoints, merged)
@@ -55,7 +47,14 @@ This project focuses on applying statistical-based Hidden Markov Model(HMM), Nat
     ```
   
   #### Part 2 - Optimising Model Selection
-  - Model selection using BIC (Bayesian Information Criterion), AIC (Akaike Information Criterion) and Silhouette score
+  - Model selection using Bayesian Information Criterion, Akaike Information Criterion and Silhouette score
+     ```
+        n_features = X_scaled.shape[1]
+        n_params = n_states * n_states + n_states * n_features + n_states * n_features * (n_features + 1) // 2
+        log_likelihood = model.score(X_scaled)
+        bic = -2 * log_likelihood + n_params * np.log(X_scaled.shape[0])
+        aic = -2 * log_likelihood + 2 * n_params
+    ```
   - Statistical approach on choosing optimised model
   - Elbow Plots which visualize the minimisation process, States prediction
   - Regime Classification and Distribution Plots
