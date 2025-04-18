@@ -22,6 +22,7 @@ This project focuses on applying statistical-based Hidden Markov Model(HMM), Nat
 ### HMM Backbone
   #### Part 1 - Obtaining Datas and Identify Basic Relationships
   - Features input for visualisation (from distinct endpoints, merged)
+    
     ```
    📌 Data pre-stored in CSV to reduce redundant read operation
    📌 Exchange flow endpoints prioritized: flow_mean, flow_total, transaction_count
@@ -33,13 +34,17 @@ This project focuses on applying statistical-based Hidden Markov Model(HMM), Nat
    📌 Aggregated into hourly intervals, covering 5 years
    📌 5-year visualisation using timeseries plots
     ```
+    
   - Correlation tables between features
+    
     ```
    📌 Generate correlation matrix (0<=x<=1) among features
    📌 Analyse relationship between features
    📌 Visualised using heatmaps for feature prioritisation
     ```
+    
   - Frequency plots against features
+    
      ```
    📌 Identifying norm of the crypto, significant signal for upcoming actions
        - Verify whale dominations 
@@ -47,6 +52,7 @@ This project focuses on applying statistical-based Hidden Markov Model(HMM), Nat
        - Verify speculative bubbles' presence
    📌 Enable data-driven decision-making through graph shapes
     ```
+  
   #### Part 2 - Optimising Model Selection
   - Model selection using BIC (Bayesian Information Criterion), AIC (Akaike Information Criterion) and Silhouette score
   - Statistical approach on choosing optimised model
