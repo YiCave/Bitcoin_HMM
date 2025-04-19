@@ -221,6 +221,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
      ```
      
 ### 4. LSTM_CNN OHLCV
+
 ### 5. Data Manipulation
 #### Part 1 - Initial Data Standardization and Cleaning
     - Loads Raw Data (‘output_data_with_regime.csv’)
