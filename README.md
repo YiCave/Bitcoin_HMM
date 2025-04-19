@@ -346,172 +346,200 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
         ``` 
 
 
-Transaction count features (not gud)
-👉tx_count_per_volume
-  Calculation: Transaction Count / Trading Volume
-  Purpose: Compares the frequency of on-chain exchange-related transactions to the trading volume. A high value might indicate many small transactions relative to volume (potentially retail activity), while a low value might suggest fewer, larger transactions or high volume driven by off-chain activity.
-  Potential signal: 
-  Changes in this ratio could signal shifts in market participation structure (retail vs. institutional).
-
-Flow rate changes
-👉flow_mean_change
-  Calculation: Percentage change in the mean flow value from the previous period.
-  Purpose: Measures the short-term change in the average size of transactions involved in exchange flows. An increasing value indicates larger average flow sizes, potentially signaling increased conviction or larger players becoming active.
-  Potential signal: 
-  Sharp increases/decreases could precede volatility or trend changes.
-
-Lagged features
-👉inflow_outflow_ratio_lag1, netflow_total_lag3, top10_dominance_inflow_lag7
-  Calculation: Value of the base feature shifted back by 'lag' periods (1, 3, or 7).
-  Purpose: Provides the model with historical context for key metrics. Allows the model to learn patterns based not just on the current value but also on recent past values, potentially capturing momentum or autoregressive effects.
-  Potential signal: 
-  Comparison between current and lagged values can indicate acceleration/deceleration or divergence.
-
-Flow acceleration
-👉inflow_acceleration
-  Calculation: Second difference of Total Inflow
-  Purpose: Measures the rate of change of the *change* in total inflow. Positive acceleration means inflows are increasing at a faster rate (or decreasing at a slower rate). Negative acceleration means the opposite. Captures shifts in the momentum of inflows.
-  Potential signal: 
-  Peaks/troughs in acceleration might precede turning points in inflow trends or price.
+     - Transaction count features
+        ``` 
+          👉tx_count_per_volume
+          Calculation: Transaction Count / Trading Volume
+          Purpose: Compares the frequency of on-chain exchange-related transactions to the trading volume. A high value might indicate many small transactions 
+          relative to volume (potentially retail activity), while a low value might suggest fewer, larger transactions or high volume driven by off-chain activity.
+          Potential signal: 
+          Changes in this ratio could signal shifts in market participation structure (retail vs. institutional).
+         ``` 
+      - Flow rate changes
+         ``` 
+          👉flow_mean_change
+          Calculation: Percentage change in the mean flow value from the previous period.
+          Purpose: Measures the short-term change in the average size of transactions involved in exchange flows. An increasing value indicates larger average 
+          flow sizes, potentially signaling increased conviction or larger players becoming active.
+          Potential signal: 
+          Sharp increases/decreases could precede volatility or trend changes.
+         ``` 
+     - Lagged features
+        ``` 
+          👉inflow_outflow_ratio_lag1, netflow_total_lag3, top10_dominance_inflow_lag7
+          Calculation: Value of the base feature shifted back by 'lag' periods (1, 3, or 7).
+          Purpose: Provides the model with historical context for key metrics. Allows the model to learn patterns based not just on the current value but also on 
+          recent past values, potentially capturing momentum or autoregressive effects.
+          Potential signal: 
+          Comparison between current and lagged values can indicate acceleration/deceleration or divergence.
+        ``` 
+      - Flow acceleration
+         ``` 
+`          👉inflow_acceleration
+           Calculation: Second difference of Total Inflow
+           Purpose: Measures the rate of change of the *change* in total inflow. Positive acceleration means inflows are increasing at a faster rate (or 
+           decreasing at a slower rate). Negative acceleration means the opposite. Captures shifts in the momentum of inflows.
+           Potential signal: 
+           Peaks/troughs in acceleration might precede turning points in inflow trends or price.
   
-👉outflow_acceleration
-  Calculation: Second difference of Total Outflow
-  Purpose: Measures the acceleration of total outflow. Captures shifts in the momentum of outflows, similar to inflow acceleration.
-  Potential signal: 
-  Similar to inflow acceleration, could signal turning points
+           👉outflow_acceleration
+           Calculation: Second difference of Total Outflow
+           Purpose: Measures the acceleration of total outflow. Captures shifts in the momentum of outflows, similar to inflow acceleration.
+           Potential signal: 
+           Similar to inflow acceleration, could signal turning points
+          ``` 
 
-Moving average features of on-chain metrics
-👉e.g. , inflow_total_ma7, netflow_total_30
-  Calculation: Rolling moving average of the base feature over a specified window (7, 14, or 30).
-  Purpose: Smooths out short-term fluctuations in the base metrics, revealing underlying trends in inflows, outflows, or netflows over different time horizons (short, medium, long).
-  Potential signal: 
-  Crossovers between different MA windows or between the metric and its MA can generate trend signals.
+     - Moving average features of on-chain metrics
+       ``` 
+          👉e.g. , inflow_total_ma7, netflow_total_30
+          Calculation: Rolling moving average of the base feature over a specified window (7, 14, or 30).
+          Purpose: Smooths out short-term fluctuations in the base metrics, revealing underlying trends in inflows, outflows, or netflows over different time 
+          horizons (short, medium, long).
+          Potential signal: 
+          Crossovers between different MA windows or between the metric and its MA can generate trend signals.
 
-Volatility in on-chain metrics
-👉inflow_volatility 
-  Calculation: Rolling 7-period Coefficient of Variation (Std Dev / Mean) of Total Inflow.
-  Purpose: Measures the *relative* volatility of exchange inflows compared to their recent average size. High values indicate erratic or unstable inflow patterns, while low values suggest consistency.
-  Potential signal: 
-  Periods of low volatility might precede breakouts; high volatility might signal uncertainty or distribution/accumulation climaxes.
+    - Volatility in on-chain metrics
+     ``` 
+         👉inflow_volatility 
+         Calculation: Rolling 7-period Coefficient of Variation (Std Dev / Mean) of Total Inflow.
+         Purpose: Measures the *relative* volatility of exchange inflows compared to their recent average size. High values indicate erratic or unstable inflow 
+         patterns, while low values suggest consistency.
+         Potential signal: 
+         Periods of low volatility might precede breakouts; high volatility might signal uncertainty or distribution/accumulation climaxes.
   
-👉outflow_volatility
-  Calculation: Rolling 7-period Coefficient of Variation (Std Dev / Mean) of Total Outflow.
-  Purpose: Measures the relative volatility of exchange outflows. Similar interpretation to inflow volatility but for coins leaving exchanges.
-  Potential signal: 
-  Similar signals to inflow volatility, potentially indicating accumulation stability or distribution panic.
-
-Divergence between inflow and outflow volatility
-👉flow_divergence
-  Calculation: Absolute difference between `inflow_volatility` and `outflow_volatility`.
-  Purpose: Highlights periods where the stability patterns of inflows and outflows differ significantly. For example, stable outflows but volatile inflows might suggest panic selling or uncertain buying interest.
-  Potential signal: 
-  High divergence could signal market confusion or transitional phases.
-
-On-chain trend features (based on 7-day change)
-👉inflow_trend
-  Calculation: Binary indicator (1 if 7-period % change in Total Inflow > 0, else 0).
-  Purpose: Provides a simple binary signal indicating the direction of the short-term (weekly) trend in exchange inflows.
-  Potential signal: 
-  persistent 1s suggest increasing selling pressure; persistent 0s suggest easing pressure.
+         👉outflow_volatility
+         Calculation: Rolling 7-period Coefficient of Variation (Std Dev / Mean) of Total Outflow.
+         Purpose: Measures the relative volatility of exchange outflows. Similar interpretation to inflow volatility but for coins leaving exchanges.
+         Potential signal: 
+         Similar signals to inflow volatility, potentially indicating accumulation stability or distribution panic.
+       ``` 
+    - Divergence between inflow and outflow volatility
+       ``` 
+         👉flow_divergence
+          Calculation: Absolute difference between `inflow_volatility` and `outflow_volatility`.
+          Purpose: Highlights periods where the stability patterns of inflows and outflows differ significantly. For example, stable outflows but volatile inflows 
+          might suggest panic selling or uncertain buying interest.
+          Potential signal: 
+          High divergence could signal market confusion or transitional phases.
+        ``` 
+    - On-chain trend features (based on 7-day change)
+        ``` 
+          👉inflow_trend
+          Calculation: Binary indicator (1 if 7-period % change in Total Inflow > 0, else 0).
+          Purpose: Provides a simple binary signal indicating the direction of the short-term (weekly) trend in exchange inflows.
+          Potential signal: 
+          persistent 1s suggest increasing selling pressure; persistent 0s suggest easing pressure.
   
-👉outflow_trend
-  Calculation: Binary indicator (1 if 7-period % change in Total Outflow > 0, else 0).
-  Purpose: Provides a binary signal for the direction of the short-term (weekly) trend in exchange outflows.
-  Potential signal: 
-  persistent 1s suggest increasing withdrawal/HODLing;
-  persistent 0s suggest less withdrawal activity.
+          👉outflow_trend
+          Calculation: Binary indicator (1 if 7-period % change in Total Outflow > 0, else 0).
+          Purpose: Provides a binary signal for the direction of the short-term (weekly) trend in exchange outflows.
+          Potential signal: 
+          persistent 1s suggest increasing withdrawal/HODLing;
+          persistent 0s suggest less withdrawal activity.
 
-Trend alignment (Are inflow and outflow trends moving together?)
-👉trend_alignment
-  Calculation: Binary indicator (1 if `inflow_trend` == `outflow_trend`, else 0).
-  Purpose: Indicates whether the short-term trends of inflows and outflows are moving in the same direction (alignment = 1) or opposite directions (alignment = 0). Divergence (0) might signal market indecision or turning points.
-  Potential signal: 
-  Shift from 1 to 0 or vice versa
-
-On-chain momentum (Short MA / Long MA ratio)
-👉inflow_momentum
-  Calculation: Ratio of short-term MA (7) to long-term MA (30) for Total Inflow, centered around 0.
-  Purpose: Measures the momentum of exchange inflows. Positive values indicate the short-term average inflow is higher than the long-term average (upward momentum), negative values indicate the opposite.
-  Potential signal:
-  Crossovers through 0 or extreme positive/negative values could signal shifts in inflow strength.
+     - Trend alignment (Are inflow and outflow trends moving together?)
+      ``` 
+        👉trend_alignment
+        Calculation: Binary indicator (1 if `inflow_trend` == `outflow_trend`, else 0).
+        Purpose: Indicates whether the short-term trends of inflows and outflows are moving in the same direction (alignment = 1) or opposite directions 
+        (alignment = 0). Divergence (0) might signal market indecision or turning points.
+        Potential signal: 
+       Shift from 1 to 0 or vice versa
+      ``` 
+    - On-chain momentum (Short MA / Long MA ratio)
+     ``` 
+        👉inflow_momentum
+        Calculation: Ratio of short-term MA (7) to long-term MA (30) for Total Inflow, centered around 0.
+        Purpose: Measures the momentum of exchange inflows. Positive values indicate the short-term average inflow is higher than the long-term average (upward            momentum), negative values indicate the opposite.
+        Potential signal:
+        Crossovers through 0 or extreme positive/negative values could signal shifts in inflow strength.
   
-👉outflow_momentum
-  Calculation: Ratio of short-term MA (7) to long-term MA (30) for Total Outflow, centered around 0.
-  Purpose: Measures the momentum of exchange outflows. Interpreted similarly to inflow momentum but for coins leaving exchanges.
-  Potential signal: 
-  Similar signals to inflow momentum, reflecting strength of withdrawals/accumulation.
+        👉outflow_momentum
+        Calculation: Ratio of short-term MA (7) to long-term MA (30) for Total Outflow, centered around 0.
+        Purpose: Measures the momentum of exchange outflows. Interpreted similarly to inflow momentum but for coins leaving exchanges.
+        Potential signal: 
+        Similar signals to inflow momentum, reflecting strength of withdrawals/accumulation.
+     ``` 
+   - Exchange reserve metrics
+      ``` 
+        👉cumulative_netflow
+        Calculation: Cumulative sum of (inflow_total - outflow_total)
+        Purpose: Tracks the overall historical net balance change on exchanges. Provides a longer-term perspective on supply availability on trading platforms.
+        Potential signal: 
+        Long-term trends (increasing/decreasing) can indicate macro accumulation or distribution phases
 
-Exchange reserve metrics
-👉cumulative_netflow
-  Calculation: Cumulative sum of (inflow_total - outflow_total)
-  Purpose: Tracks the overall historical net balance change on exchanges. Provides a longer-term perspective on supply availability on trading platforms.
-  Potential signal: 
-  Long-term trends (increasing/decreasing) can indicate macro accumulation or distribution phases.
-  
-👉reserve_change_rate
-  Calculation: 7-day percentage change of cumulative_netflow
-  Purpose: Measures the recent weekly rate of change in the overall exchange balance trend. Highlights acceleration or deceleration in net exchange supply shifts.
-  Potential signal: 
-  Sharp increases/decreases could signal imminent shifts in supply/demand balance.
+        👉reserve_change_rate
+        Calculation: 7-day percentage change of cumulative_netflow
+        Purpose: Measures the recent weekly rate of change in the overall exchange balance trend. Highlights acceleration or deceleration in net exchange supply 
+        shifts
+        Potential signal: 
+        Sharp increases/decreases could signal imminent shifts in supply/demand balance.
+       ``` 
 
-Whale transaction metrics
-👉whale_netflow
-  Calculation: inflow_top10 - outflow_top10
-  Purpose: Isolates the net flow direction specifically for large ('whale') transactions. A positive value suggests whales are net senders to exchanges; negative suggests they are net withdrawers.
-  Potential signal: 
-  often considered a leading indicator
-  can precede price action
+    - Whale transaction metrics
+      ``` 
+        👉whale_netflow
+        Calculation: inflow_top10 - outflow_top10
+        Purpose: Isolates the net flow direction specifically for large ('whale') transactions. A positive value suggests whales are net senders to exchanges;     
+        negative suggests they are net withdrawers.
+        Potential signal: 
+        often considered a leading indicator
+        can precede price action
   
-👉whale_activity
-  Calculation: Average of inflow_top10 and outflow_top10
-  Purpose: Gauges the overall volume of large transactions interacting with exchanges, regardless of direction. High activity indicates significant whale movement.
-  Potential signal: 
-  Increased activity might precede periods of higher volatility or trend changes driven by large players.
+        👉whale_activity
+        Calculation: Average of inflow_top10 and outflow_top10
+        Purpose: Gauges the overall volume of large transactions interacting with exchanges, regardless of direction. High activity indicates significant whale            movement.
+        Potential signal: 
+        Increased activity might precede periods of higher volatility or trend changes driven by large players.
+     ``` 
+    - Whale Dominance Trend
+     ``` 
+        👉whale_dominance_trend
+        Calculation: average of top10_dominance_inflow and top10_dominance_outflow
+        Purpose: Provides a smoothed measure of the proportion of total exchange flows attributable to whales.
+        Potential signal: 
+        Trend can indicate whether market movements are increasingly driven by large players / becoming more distributed.
 
-Whale Dominance Trend
-👉whale_dominance_trend
-  Calculation: average of top10_dominance_inflow and top10_dominance_outflow
-  Purpose: Provides a smoothed measure of the proportion of total exchange flows attributable to whales.
-  Potential signal: 
-  Trend can indicate whether market movements are increasingly driven by large players / becoming more distributed.
-  
-👉whale_dominance_change
-  Calculation: 3-day percentage change of whale_dominance_trend
-  Purpose: Measures the short-term change in whale influence. Rapid changes might signal shifts in market control or imminent large player actions.
-  Potential signal: Spikes could precede whale-driven volatility
+        👉whale_dominance_change
+        Calculation: 3-day percentage change of whale_dominance_trend
+        Purpose: Measures the short-term change in whale influence. Rapid changes might signal shifts in market control or imminent large player actions.
+        Potential signal: Spikes could precede whale-driven volatility
+     ``` 
 
-Transaction activity metrics
-👉tx_momentum
-  Calculation: 7-day percentage change of transactions_count_flow
-  Purpose: Measures the weekly momentum of overall exchange-related transaction frequency
-  Potential signal: 
-  Increasing momentum can suggest growing network usage or speculative interest.
+     - Transaction activity metrics
+     ```
+        👉tx_momentum
+        Calculation: 7-day percentage change of transactions_count_flow
+        Purpose: Measures the weekly momentum of overall exchange-related transaction frequency
+        Potential signal: 
+        Increasing momentum can suggest growing network usage or speculative interest.
   
-👉tx_acceleration
-  Calculation: 1-day difference (change) of tx_momentum
-  Purpose: Measures the acceleration/deceleration of transaction frequency momentum
-  Potential signal: 
-  Positive acceleration suggests activity is picking up speed; negative suggests it's slowing down.
+        👉tx_acceleration
+        Calculation: 1-day difference (change) of tx_momentum
+        Purpose: Measures the acceleration/deceleration of transaction frequency momentum
+        Potential signal: 
+        Positive acceleration suggests activity is picking up speed; negative suggests it's slowing down.
   
-👉tx_volatility
-  Calculation: Rolling 7-day Coefficient of Variation of transactions_count_flow
-  Purpose: Measures the relative stability of transaction counts. High volatility suggests inconsistent activity.
-  Potential signal: 
-  Low volatility might indicate a stable market phase; increasing volatility could precede price moves.
-
-Market state classification
-👉accumulation_phase
-  Calculation: Binary flag based on inflow/outflow ratio and its MA being below thresholds.
-  Purpose: Heuristic attempt to identify potential accumulation periods based on strong net outflows from exchanges.
-  Potential signal: 
-  '1' suggests conditions often associated with market bottoms or consolidation before upward moves.
+        👉tx_volatility
+        Calculation: Rolling 7-day Coefficient of Variation of transactions_count_flow
+        Purpose: Measures the relative stability of transaction counts. High volatility suggests inconsistent activity.
+        Potential signal: 
+        Low volatility might indicate a stable market phase; increasing volatility could precede price moves.
+    ```
+   - Market state classification
+     ```
+        👉accumulation_phase
+        Calculation: Binary flag based on inflow/outflow ratio and its MA being below thresholds.
+        Purpose: Heuristic attempt to identify potential accumulation periods based on strong net outflows from exchanges.
+        Potential signal: 
+        '1' suggests conditions often associated with market bottoms or consolidation before upward moves.
   
-👉distribution_phase
-  Calculation: Binary flag based on inflow/outflow ratio and its MA being above thresholds
-  Purpose: Heuristic attempt to identify potential distribution periods based on strong net inflows to exchanges.
-  Potential signal: 
-  '1' suggests conditions often associated with market tops or selling pressure building up.
-
+        👉distribution_phase
+        Calculation: Binary flag based on inflow/outflow ratio and its MA being above thresholds
+        Purpose: Heuristic attempt to identify potential distribution periods based on strong net inflows to exchanges.
+        Potential signal: 
+        '1' suggests conditions often associated with market tops or selling pressure building up.
+      ```
 9. Weightage Control and Application
 10. Backtesting and ForwardTesting
  - Parameter tuning for optimal number of regimes
