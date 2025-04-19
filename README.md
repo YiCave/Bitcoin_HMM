@@ -165,7 +165,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
         👉 ‘positive’ → 2
      📌 Consistent across both traditional ML and BERT pipelines  
      ```
-  ### Part 2 - Model Building and Optimisation
+  #### Part 2 - Model Building and Optimisation
    - Logistic Regression with TF-IDF
      ```
      📌 Classic ML pipeline: TF-IDF + Logistic Regression  
@@ -192,14 +192,14 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
      📌 Track performance on the test set per epoch  
      📌 Highlighted per model: traditional vs. transformer-based  
      ```
-  ### Part 3 - Comparative Visualisation and Analysis
+  #### Part 3 - Comparative Visualisation and Analysis
    - Score Tracking and Comparison
      ```
      📌 Evaluation matrix for both models:
          - Accuracy comparison (TF-IDF vs. BERT)  
          - F1 score: highlighting class prediction quality 
      ```
-  ### Part 4 - Future Directions and Production-Level Strategy
+  #### Part 4 - Future Directions and Production-Level Strategy
    - Domain-Specific Model Integration
      ```
      📌 Integration of `ProsusAI/finbert` for financial language  
