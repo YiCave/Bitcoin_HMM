@@ -226,34 +226,34 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
 #### Part 1 - Initial Data Standardization and Cleaning
     - Loads Raw Data (‘output_data_with_regime.csv’)
     - Apply Datetime Rounding - rounding seconds (output_data_with_regime)
-      '''
+      ```
         if seconds >= 30, increases minute by 1;
         Set seconds and microseconds to 0
         Return formatted string
-      '''
+      ```
     - Handling Errors
-      '''
+      ```
        📌 return original string and print a warning for invalid & missing values cases
        📌 use try-except flow statement in handling exceptions
-      '''
+      ```
     - Save Cleaned Data Outputs (‘cleaned_cryptoquant_data.csv’)
     
 #### Part 2 - Datetime Alignment and Merging
     - Parse Datetime Strings
-      '''
+      ```
        📌 Convert datetime string columns to datetime objects
-      '''
+      ```
     - Apply Datetime Rounding (BTCUSD)
-      '''
+      ```
        📌 Align Timezones to UTC
-      '''
+      ```
        📌 Ensures both datasets’ key datatime columns are timezone-aware and set to UTC, preventing mismatches during merging
-      '''
+      ```
      - Merge Dataframes
-      '''
+      ```
        📌 Keep only matching datetime
        📌 Add suffixes to distinguish overlapping column names
-      '''
+      ```
      - Save Merged Data (merged_crypto_btcusd_data.csv)
      
 #### Part 3: Final Cleaning, Validation, and Structuring
@@ -261,26 +261,26 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
      - Delete intermediate columns created during parsing and merging
      - Standardize Column Names for clarity(‘df.rename’)
      - Consolidate Timestamps
-       '''
+       ```
         📌 Compares auxiliary timestamp columns (‘start_time, ‘Timestamp’) if present.
         📌  Potentially drops ‘Timestamp’ if deemed redundant based on average difference from ‘start_time
-       '''
+       ```
      - Ensure Data Types
-      ''' 
+      ```
         📌  Confirms final ‘datetime’ column is a datetime object
         📌  Rounds numerical column (OHLCV, flow metrics) to standard decimal places
-      ''' 
+      ``` 
      - Validate Data Intergrity
-      '''
+      ```
        📌 Checks for & handles potential issues by:
         👉Remove Duplicates (‘df.duplicated’, df.drop_duplicates’)
         👉Check for Missing Values (‘df.isnull().sum’) and prepare for interpolation.
         👉Check Internal Consistency
-      '''
+      ```
      - Structure Data (‘df.sort_values’, column reordering)
-      '''
+      ```
        📌 Sorts dataset chronologically by the main ‘datetime’ column
-      '''
+      ```
 📌Save Final Data (‘cleaned_bitcoin_data.csv)
 
 6. HMM NLP Signals Integration
