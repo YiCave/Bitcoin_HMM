@@ -367,30 +367,31 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
          ``` 
          
 - Lagged features
+  
         ``` 
-          👉inflow_outflow_ratio_lag1, netflow_total_lag3, top10_dominance_inflow_lag7
-          Calculation: Value of the base feature shifted back by 'lag' periods (1, 3, or 7).
-          Purpose: Provides the model with historical context for key metrics. Allows the model to learn patterns based not just on the current value but also on 
-          recent past values, potentially capturing momentum or autoregressive effects.
-          Potential signal: 
-          Comparison between current and lagged values can indicate acceleration/deceleration or divergence.
-        
-        ``` 
+           👉inflow_outflow_ratio_lag1, netflow_total_lag3, top10_dominance_inflow_lag7
+           Calculation: Value of the base feature shifted back by 'lag' periods (1, 3, or 7).
+           Purpose: Provides the model with historical context for key metrics. Allows the model to learn patterns based not just on the current value but also on 
+           recent past values, potentially capturing momentum or autoregressive effects.
+           Potential signal: 
+           Comparison between current and lagged values can indicate acceleration/deceleration or divergence. 
+        ```
+  
  - Flow acceleration
 
         ``` 
-          👉inflow_acceleration
-           Calculation: Second difference of Total Inflow
-           Purpose: Measures the rate of change of the *change* in total inflow. Positive acceleration means inflows are increasing at a faster rate (or 
-           decreasing at a slower rate). Negative acceleration means the opposite. Captures shifts in the momentum of inflows.
-           Potential signal: 
-           Peaks/troughs in acceleration might precede turning points in inflow trends or price.
+           👉inflow_acceleration
+            Calculation: Second difference of Total Inflow
+            Purpose: Measures the rate of change of the *change* in total inflow. Positive acceleration means inflows are increasing at a faster rate (or 
+            decreasing at a slower rate). Negative acceleration means the opposite. Captures shifts in the momentum of inflows.
+            Potential signal: 
+            Peaks/troughs in acceleration might precede turning points in inflow trends or price.
   
-           👉outflow_acceleration
-           Calculation: Second difference of Total Outflow
-           Purpose: Measures the acceleration of total outflow. Captures shifts in the momentum of outflows, similar to inflow acceleration.
-           Potential signal: 
-           Similar to inflow acceleration, could signal turning points
+            👉outflow_acceleration
+            Calculation: Second difference of Total Outflow
+            Purpose: Measures the acceleration of total outflow. Captures shifts in the momentum of outflows, similar to inflow acceleration.
+            Potential signal: 
+            Similar to inflow acceleration, could signal turning points
            
         ```
 - Moving average features of on-chain metrics
