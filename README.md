@@ -380,7 +380,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
  - Flow acceleration
 
         ``` 
-`          👉inflow_acceleration
+          👉inflow_acceleration
            Calculation: Second difference of Total Inflow
            Purpose: Measures the rate of change of the *change* in total inflow. Positive acceleration means inflows are increasing at a faster rate (or 
            decreasing at a slower rate). Negative acceleration means the opposite. Captures shifts in the momentum of inflows.
@@ -393,9 +393,8 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
            Potential signal: 
            Similar to inflow acceleration, could signal turning points
            
-        ``` 
-
-     - Moving average features of on-chain metrics
+        ```
+   - Moving average features of on-chain metrics
        ``` 
           👉e.g. , inflow_total_ma7, netflow_total_30
           Calculation: Rolling moving average of the base feature over a specified window (7, 14, or 30).
@@ -404,7 +403,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
           Potential signal: 
           Crossovers between different MA windows or between the metric and its MA can generate trend signals.
 
-    - Volatility in on-chain metrics
+ - Volatility in on-chain metrics
      ``` 
          👉inflow_volatility 
          Calculation: Rolling 7-period Coefficient of Variation (Std Dev / Mean) of Total Inflow.
@@ -419,7 +418,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
          Potential signal: 
          Similar signals to inflow volatility, potentially indicating accumulation stability or distribution panic.
        ``` 
-    - Divergence between inflow and outflow volatility
+  - Divergence between inflow and outflow volatility
        ``` 
          👉flow_divergence
           Calculation: Absolute difference between `inflow_volatility` and `outflow_volatility`.
@@ -428,7 +427,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
           Potential signal: 
           High divergence could signal market confusion or transitional phases.
         ``` 
-    - On-chain trend features (based on 7-day change)
+  - On-chain trend features (based on 7-day change)
         ``` 
           👉inflow_trend
           Calculation: Binary indicator (1 if 7-period % change in Total Inflow > 0, else 0).
@@ -443,7 +442,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
           persistent 1s suggest increasing withdrawal/HODLing;
           persistent 0s suggest less withdrawal activity.
 
-     - Trend alignment (Are inflow and outflow trends moving together?)
+    - Trend alignment (Are inflow and outflow trends moving together?)
       ``` 
         👉trend_alignment
         Calculation: Binary indicator (1 if `inflow_trend` == `outflow_trend`, else 0).
@@ -452,7 +451,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
         Potential signal: 
        Shift from 1 to 0 or vice versa
       ``` 
-    - On-chain momentum (Short MA / Long MA ratio)
+- On-chain momentum (Short MA / Long MA ratio)
      ``` 
         👉inflow_momentum
         Calculation: Ratio of short-term MA (7) to long-term MA (30) for Total Inflow, centered around 0.
@@ -466,7 +465,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
         Potential signal: 
         Similar signals to inflow momentum, reflecting strength of withdrawals/accumulation.
      ``` 
-   - Exchange reserve metrics
+ - Exchange reserve metrics
       ``` 
         👉cumulative_netflow
         Calculation: Cumulative sum of (inflow_total - outflow_total)
@@ -482,7 +481,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
         Sharp increases/decreases could signal imminent shifts in supply/demand balance.
        ``` 
 
-    - Whale transaction metrics
+  - Whale transaction metrics
       ``` 
         👉whale_netflow
         Calculation: inflow_top10 - outflow_top10
@@ -498,7 +497,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
         Potential signal: 
         Increased activity might precede periods of higher volatility or trend changes driven by large players.
      ``` 
-    - Whale Dominance Trend
+ - Whale Dominance Trend
      ``` 
         👉whale_dominance_trend
         Calculation: average of top10_dominance_inflow and top10_dominance_outflow
@@ -510,9 +509,8 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
         Calculation: 3-day percentage change of whale_dominance_trend
         Purpose: Measures the short-term change in whale influence. Rapid changes might signal shifts in market control or imminent large player actions.
         Potential signal: Spikes could precede whale-driven volatility
-     ``` 
-
-     - Transaction activity metrics
+     ```
+ - Transaction activity metrics
      ```
         👉tx_momentum
         Calculation: 7-day percentage change of transactions_count_flow
@@ -532,7 +530,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
         Potential signal: 
         Low volatility might indicate a stable market phase; increasing volatility could precede price moves.
     ```
-   - Market state classification
+ - Market state classification
      ```
         👉accumulation_phase
         Calculation: Binary flag based on inflow/outflow ratio and its MA being below thresholds.
