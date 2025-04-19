@@ -335,13 +335,16 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
          Purpose: Relates the net amount moving to/from exchanges to the overall trading activity. A high absolute value suggests that exchange flows are 
          significant relative to trading volume, potentially having a larger price impact.
          Potential signal: 
+         large positive/negative values coinciding with price moves might confirm flow-driven pressure
+
+         👉netflow_to_volume
+         Calculation: Total Netflow / Trading Volume
+         Purpose: Relates the net amount moving to/from exchanges to the overall trading activity. A high absolute value suggests that exchange flows are       
+         significant relative to trading volume, potentially having a larger price impact.
+         Potential signal: 
          large positive/negative values coinciding with price moves might confirm flow-driven pressure.
         ``` 
-👉netflow_to_volume
-  Calculation: Total Netflow / Trading Volume
-  Purpose: Relates the net amount moving to/from exchanges to the overall trading activity. A high absolute value suggests that exchange flows are significant relative to trading volume, potentially having a larger price impact.
-  Potential signal: 
-  large positive/negative values coinciding with price moves might confirm flow-driven pressure.
+
 
 Transaction count features (not gud)
 👉tx_count_per_volume
