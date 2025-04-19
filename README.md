@@ -304,6 +304,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
       ```
 
     - Top wallet concentration
+    
       ```
         👉top10_dominance_inflow
         Calculation: Top 10 Inflow / Total Inflow
@@ -374,7 +375,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
           Potential signal: 
           Comparison between current and lagged values can indicate acceleration/deceleration or divergence.
         ``` 
-      - Flow acceleration
+    - Flow acceleration
         ``` 
 `          👉inflow_acceleration
            Calculation: Second difference of Total Inflow
