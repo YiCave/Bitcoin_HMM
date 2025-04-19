@@ -375,6 +375,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
           recent past values, potentially capturing momentum or autoregressive effects.
           Potential signal: 
           Comparison between current and lagged values can indicate acceleration/deceleration or divergence.
+        
         ``` 
  - Flow acceleration
 
