@@ -357,7 +357,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
           Changes in this ratio could signal shifts in market participation structure (retail vs. institutional).
          ```
 
-     - Flow rate changes
+ - Flow rate changes
          ``` 
           👉flow_mean_change
           Calculation: Percentage change in the mean flow value from the previous period.
@@ -367,7 +367,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
           Sharp increases/decreases could precede volatility or trend changes.
          ``` 
          
-   - Lagged features
+- Lagged features
         ``` 
           👉inflow_outflow_ratio_lag1, netflow_total_lag3, top10_dominance_inflow_lag7
           Calculation: Value of the base feature shifted back by 'lag' periods (1, 3, or 7).
@@ -394,7 +394,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
            Similar to inflow acceleration, could signal turning points
            
         ```
-   - Moving average features of on-chain metrics
+- Moving average features of on-chain metrics
        ``` 
           👉e.g. , inflow_total_ma7, netflow_total_30
           Calculation: Rolling moving average of the base feature over a specified window (7, 14, or 30).
@@ -442,7 +442,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
           persistent 1s suggest increasing withdrawal/HODLing;
           persistent 0s suggest less withdrawal activity.
 
-    - Trend alignment (Are inflow and outflow trends moving together?)
+ - Trend alignment (Are inflow and outflow trends moving together?)
       ``` 
         👉trend_alignment
         Calculation: Binary indicator (1 if `inflow_trend` == `outflow_trend`, else 0).
