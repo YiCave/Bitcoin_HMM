@@ -232,26 +232,26 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
       '''
     - Handling Errors
       '''
-      📌 return original string and print a warning for invalid & missing values cases
-      📌 use try-except flow statement in handling exceptions
+       📌 return original string and print a warning for invalid & missing values cases
+       📌 use try-except flow statement in handling exceptions
       '''
     - Save Cleaned Data Outputs (‘cleaned_cryptoquant_data.csv’)
     
 #### Part 2 - Datetime Alignment and Merging
     - Parse Datetime Strings
       '''
-      📌 Convert datetime string columns to datetime objects
+       📌 Convert datetime string columns to datetime objects
       '''
     - Apply Datetime Rounding (BTCUSD)
       '''
-      📌 Align Timezones to UTC
+       📌 Align Timezones to UTC
       '''
-      📌 Ensures both datasets’ key datatime columns are timezone-aware and set to UTC, preventing mismatches during merging
+       📌 Ensures both datasets’ key datatime columns are timezone-aware and set to UTC, preventing mismatches during merging
       '''
      - Merge Dataframes
       '''
-      📌 Keep only matching datetime
-      📌 Add suffixes to distinguish overlapping column names
+       📌 Keep only matching datetime
+       📌 Add suffixes to distinguish overlapping column names
       '''
      - Save Merged Data (merged_crypto_btcusd_data.csv)
      
@@ -261,13 +261,13 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
      - Standardize Column Names for clarity(‘df.rename’)
      - Consolidate Timestamps
        '''
-       📌 Compares auxiliary timestamp columns (‘start_time, ‘Timestamp’) if present.
-       📌  Potentially drops ‘Timestamp’ if deemed redundant based on average difference from ‘start_time
+        📌 Compares auxiliary timestamp columns (‘start_time, ‘Timestamp’) if present.
+        📌  Potentially drops ‘Timestamp’ if deemed redundant based on average difference from ‘start_time
        '''
      - Ensure Data Types
       ''' 
-       📌  Confirms final ‘datetime’ column is a datetime object
-       📌  Rounds numerical column (OHLCV, flow metrics) to standard decimal places
+        📌  Confirms final ‘datetime’ column is a datetime object
+        📌  Rounds numerical column (OHLCV, flow metrics) to standard decimal places
       ''' 
      - Validate Data Intergrity
       '''
