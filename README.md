@@ -303,7 +303,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
         Similar but with potentially better behavior
       ```
 
-       - Top wallet concentration
+    - Top wallet concentration
       ```
         👉top10_dominance_inflow
         Calculation: Top 10 Inflow / Total Inflow
@@ -321,7 +321,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
        ```
 
 
-      - Net flow features
+     - Net flow features
        ``` 
           👉netflow_sign
           Calculation: Sign (+1, -1, 0) of Total Netflow
@@ -355,7 +355,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
           Potential signal: 
           Changes in this ratio could signal shifts in market participation structure (retail vs. institutional).
          ``` 
-      - Flow rate changes
+     - Flow rate changes
          ``` 
           👉flow_mean_change
           Calculation: Percentage change in the mean flow value from the previous period.
@@ -364,6 +364,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
           Potential signal: 
           Sharp increases/decreases could precede volatility or trend changes.
          ``` 
+         
      - Lagged features
         ``` 
           👉inflow_outflow_ratio_lag1, netflow_total_lag3, top10_dominance_inflow_lag7
@@ -374,7 +375,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
           Comparison between current and lagged values can indicate acceleration/deceleration or divergence.
         ``` 
       - Flow acceleration
-         ``` 
+        ``` 
 `          👉inflow_acceleration
            Calculation: Second difference of Total Inflow
            Purpose: Measures the rate of change of the *change* in total inflow. Positive acceleration means inflows are increasing at a faster rate (or 
@@ -387,7 +388,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
            Purpose: Measures the acceleration of total outflow. Captures shifts in the momentum of outflows, similar to inflow acceleration.
            Potential signal: 
            Similar to inflow acceleration, could signal turning points
-          ``` 
+        ``` 
 
      - Moving average features of on-chain metrics
        ``` 
