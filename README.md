@@ -282,7 +282,6 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
       ```
    - Save Final Data (‘cleaned_bitcoin_data.csv)
 
-6. HMM NLP Signals Integration
 ### Features Engineering
 
    - Inflow / Outflow ratios
@@ -544,8 +543,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
         Potential signal: 
         '1' suggests conditions often associated with market tops or selling pressure building up.
       ```
-9. Weightage Control and Application
-10. Backtesting and ForwardTesting
+10. Core
  - Parameter tuning for optimal number of regimes
 
   
