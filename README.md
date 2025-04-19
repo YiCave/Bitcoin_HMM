@@ -322,7 +322,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
        ```
 
 
-     - Net flow features
+  - Net flow features
        ``` 
           👉netflow_sign
           Calculation: Sign (+1, -1, 0) of Total Netflow
@@ -347,7 +347,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
         ``` 
 
 
-     - Transaction count features
+ - Transaction count features
         ``` 
           👉tx_count_per_volume
           Calculation: Transaction Count / Trading Volume
@@ -355,7 +355,8 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
           relative to volume (potentially retail activity), while a low value might suggest fewer, larger transactions or high volume driven by off-chain activity.
           Potential signal: 
           Changes in this ratio could signal shifts in market participation structure (retail vs. institutional).
-         ``` 
+         ```
+
      - Flow rate changes
          ``` 
           👉flow_mean_change
@@ -366,7 +367,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
           Sharp increases/decreases could precede volatility or trend changes.
          ``` 
          
-     - Lagged features
+   - Lagged features
         ``` 
           👉inflow_outflow_ratio_lag1, netflow_total_lag3, top10_dominance_inflow_lag7
           Calculation: Value of the base feature shifted back by 'lag' periods (1, 3, or 7).
@@ -375,7 +376,8 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
           Potential signal: 
           Comparison between current and lagged values can indicate acceleration/deceleration or divergence.
         ``` 
-    - Flow acceleration
+ - Flow acceleration
+
         ``` 
 `          👉inflow_acceleration
            Calculation: Second difference of Total Inflow
@@ -389,6 +391,7 @@ This project focuses on applying statistical-based Hidden Markov Models(HMM), Na
            Purpose: Measures the acceleration of total outflow. Captures shifts in the momentum of outflows, similar to inflow acceleration.
            Potential signal: 
            Similar to inflow acceleration, could signal turning points
+           
         ``` 
 
      - Moving average features of on-chain metrics
